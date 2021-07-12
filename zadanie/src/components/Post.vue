@@ -47,11 +47,12 @@ export default {
             e.target.closest('button').firstChild.classList.toggle("fa-angle-down")
             e.target.closest('button').firstChild.classList.toggle("fa-angle-up")
             },
-        async deleteHandler(){
+        async deleteHandler(e){
             if(confirm('Czy chcesz usunąć ten post?')){
                 const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${this.post.id}`, {
                     method: 'DELETE'
                 })
+                console.log(e.target.parentElement)
                 this.$store.commit('deletePost',  this.post.id)
                 console.log( res.status)
             }
